@@ -3,7 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const app = express();
-const workoutRoutes = require("./routes/workouts.js");
+const pcfyRoutes = require("./routes/pcfy.js");
 
 //middleware
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use((req, res, next) => {
 });
 
 //routes
-app.use("/api/workouts", workoutRoutes);
+app.use("/api/pcfyinfo", pcfyRoutes);
 
 //Connect to MongoDB & listen for requests
 mongoose
