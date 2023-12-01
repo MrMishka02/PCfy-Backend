@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 //get all infos
 const getInfos = async (req, res) => {
-  const pcfys = await PCfy.find({}).sort({createdAt: -1});
+  const pcfys = await PCfy.find({}).sort({ createdAt: -1 });
 
   res.status(200).json(pcfys);
 };
@@ -11,11 +11,6 @@ const getInfos = async (req, res) => {
 //get a single info
 const getInfo = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-
-  // if (!mongoose.Types.ObjectId.isValid({email: id})) {
-  //   return res.status(404).json({ error: "No such data" });
-  // }
 
   const pcfy = await PCfy.findOne({ email: id });
 
@@ -49,10 +44,6 @@ const createInfo = async (req, res) => {
 const deleteInfo = async (req, res) => {
   const { id } = req.params;
 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such info" });
-  }
-
   const pcfy = await PCfy.findOneAndDelete({ email: id });
 
   if (!pcfy) {
@@ -65,10 +56,6 @@ const deleteInfo = async (req, res) => {
 //update info
 const updateInfo = async (req, res) => {
   const { id } = req.params;
-
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "No such info" });
-  }
 
   // add doc to db
   const pcfy = await PCfy.findOneAndUpdate(
