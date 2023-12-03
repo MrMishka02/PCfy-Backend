@@ -1,28 +1,27 @@
-const express = require("express");
-const PCfy = require("../models/pcfyModel");
-const {
+import { Router } from "express";
+import {
   createInfo,
   getInfo,
   getInfos,
   deleteInfo,
   updateInfo,
-} = require("../controllers/pcfyController");
+} from "../controllers/pcfyController.js";
 
-const router = express.Router();
+const router = Router();
 
 //GET all info
 router.get("/", getInfos);
 
 //GET a single info
-router.get("/:id", getInfo);
+router.get("/:email", getInfo);
 
 //POST a new info
 router.post("/", createInfo);
 
 //DELETE a new info
-router.delete("/:id", deleteInfo);
+router.delete("/:email", deleteInfo);
 
 //UPDATE} a new info
-router.patch("/:id", updateInfo);
+router.patch("/:email", updateInfo);
 
-module.exports = router;
+export default router;

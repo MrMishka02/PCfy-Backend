@@ -1,9 +1,10 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
+import dotenv from "dotenv";
+dotenv.config();
+import express from "express";
+import mongoose from "mongoose";
 
 const app = express();
-const pcfyRoutes = require("./routes/pcfy.js");
+import pcfyRoutes from "./routes/pcfy.js";
 
 //middleware
 app.use(express.json());
