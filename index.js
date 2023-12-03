@@ -1,8 +1,8 @@
 import dotenv from "dotenv";
-dotenv.config();
 import express from "express";
 import mongoose from "mongoose";
 
+dotenv.config();
 const app = express();
 import pcfyRoutes from "./routes/pcfy.js";
 
