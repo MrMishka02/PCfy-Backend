@@ -35,7 +35,21 @@ export const getInfo = async (req, res) => {
 
 //create new info
 export const createInfo = async (req, res) => {
-  const { firstName, surName, team, position, email, phoneNumber } = req.body;
+  const {
+    personalData: { firstName, surName, team, position, email, phoneNumber },
+    laptopData: {
+      laptopName,
+      laptopBrand,
+      laptopCpu,
+      laptopCpuCores,
+      laptopCpuThreads,
+      laptopRam,
+      laptopPrice,
+      memory,
+      condition,
+      purchaseDate,
+    },
+  } = req.body;
 
   // add doc to db
   try {
@@ -46,12 +60,19 @@ export const createInfo = async (req, res) => {
         .json({ error: "ასეთი მომხმარებელი უკვე არსებობს" });
     }
     const pcfy = await PCfy.create({
-      firstName,
-      surName,
-      team,
-      position,
-      email,
-      phoneNumber,
+      personalData: { firstName, surName, team, position, email, phoneNumber },
+      laptopData: {
+        laptopName,
+        laptopBrand,
+        laptopCpu,
+        laptopCpuCores,
+        laptopCpuThreads,
+        laptopRam,
+        laptopPrice,
+        memory,
+        condition,
+        purchaseDate,
+      },
     });
     res.status(200).json(pcfy);
   } catch (error) {

@@ -14,6 +14,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.options('/api/pcfyinfo', (req, res) => {
+  // Set headers to allow cross-origin requests (CORS)
+  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.status(200).end();
+});
+
 //routes
 app.use("/api/pcfyinfo", pcfyRoutes);
 
