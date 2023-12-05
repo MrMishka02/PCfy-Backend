@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
@@ -8,16 +9,17 @@ import pcfyRoutes from "./routes/pcfy.js";
 
 //middleware
 app.use(express.json());
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log(req.path, req.method);
   next();
 });
 
-app.options('/api/pcfyinfo', (req, res) => {
+app.options("/api/pcfyinfo", (req, res) => {
   // Set headers to allow cross-origin requests (CORS)
-  res.header('Access-Control-Allow-Methods', 'OPTIONS, GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header("Access-Control-Allow-Methods", "OPTIONS, GET, POST, PUT, DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization");
   res.status(200).end();
 });
 
