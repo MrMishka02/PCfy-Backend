@@ -37,6 +37,7 @@ export const getInfo = async (req, res) => {
 export const createInfo = async (req, res) => {
   const {
     personalData: { firstName, surName, team, position, email, phoneNumber },
+    imageFile,
     laptopData: {
       laptopName,
       laptopBrand,
@@ -61,7 +62,9 @@ export const createInfo = async (req, res) => {
     }
     const pcfy = await PCfy.create({
       personalData: { firstName, surName, team, position, email, phoneNumber },
+      imageFile,
       laptopData: {
+        imageFile,
         laptopName,
         laptopBrand,
         laptopCpu,

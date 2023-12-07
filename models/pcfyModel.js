@@ -30,6 +30,10 @@ const pcfySchema = new Schema(
         required: true,
       },
     },
+    imageFile: {
+      type: String,
+      required: true,
+    },
     laptopData: {
       laptopName: {
         type: String,
