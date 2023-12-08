@@ -6,8 +6,11 @@ import cors from "cors";
 dotenv.config();
 const app = express();
 import pcfyRoutes from "./routes/pcfy.js";
+import bodyParser from "body-parser";
 
 //middleware
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(express.json());
 app.use(cors());
 
