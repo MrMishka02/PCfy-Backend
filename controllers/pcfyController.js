@@ -18,9 +18,10 @@ export const getInfos = async (req, res) => {
 //get a single info
 export const getInfo = async (req, res) => {
   const { email } = req.params;
+  console.log(email);
   try {
-    const pcfy = await PCfy.findOne({ email });
-
+    const pcfy = await PCfy.findOne({ "personalData.email": email });
+    console.log(pcfy);
     if (!pcfy) {
       return res.status(404).json({ error: "No such info" });
     }
@@ -88,7 +89,7 @@ export const deleteInfo = async (req, res) => {
   const { email } = req.params;
   // add doc to db
   try {
-    const pcfy = await PCfy.findOneAndDelete({ email });
+    const pcfy = await PCfy.findOneAndDelete({ "personalData.email": email });
 
     if (!pcfy) {
       return res.status(404).json({ error: "No such info" });
@@ -107,7 +108,7 @@ export const updateInfo = async (req, res) => {
   const { email } = req.params;
   try {
     const pcfy = await PCfy.findOneAndUpdate(
-      { email },
+      { "personalData.email": email },
       {
         ...req.body,
       }
